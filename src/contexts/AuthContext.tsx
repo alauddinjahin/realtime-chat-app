@@ -73,7 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       
       setUser(mockUser);
       localStorage.setItem('user', JSON.stringify(mockUser));
-      redirect('/chat');
+      router.push('/chat');
     } catch (err) {
       setError('Registration failed');
     } finally {
