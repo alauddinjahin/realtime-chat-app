@@ -1,4 +1,5 @@
-import { cookies } from 'next/headers';
+
+// import { cookies } from 'next/headers';
 
 export const getServerSession = () => {
   // In a real app, you would verify the session token here
@@ -6,6 +7,7 @@ export const getServerSession = () => {
   // const sessionToken = cookieStore?.get('sessionToken');
   // return sessionToken ? { user: { id: '1', username: 'john_doe' } } : null;
 
-  return { user: { id: '1', username: 'john_doe' } }
+  const storedUser = localStorage.getItem('user');
+  return storedUser ? { user: JSON.parse(storedUser) }: null
 
 };
