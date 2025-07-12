@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { User } from '@/types/user';
+import { useRouter } from 'next/navigation';
 
 interface AuthContextType {
   user: User | null;
@@ -17,6 +18,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   // Check for user in localStorage on initial load
   useEffect(() => {
@@ -44,7 +46,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       
       setUser(mockUser);
       localStorage.setItem('user', JSON.stringify(mockUser));
+      router.push('/chat');
     } catch (err) {
+      console.log(err)
       setError('Invalid email or password');
     } finally {
       setIsLoading(false);
@@ -69,6 +73,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       
       setUser(mockUser);
       localStorage.setItem('user', JSON.stringify(mockUser));
+      redirect('/chat');
     } catch (err) {
       setError('Registration failed');
     } finally {
