@@ -1,5 +1,6 @@
+"use client"
 import { FC } from 'react';
-import { Message } from '@/components/Message';
+import Message from '@/components/Message';
 import { useChat } from '@/contexts/ChatContext';
 import { useAuth } from '@/contexts/AuthContext';
 

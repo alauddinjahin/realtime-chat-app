@@ -1,9 +1,9 @@
 import { format } from 'date-fns';
 import { useAuth } from '../contexts/AuthContext';
 
-const Message = ({ message }) => {
+const Message = ({ message }: any) => {
   const { user } = useAuth();
-  const isCurrentUser = message.senderId === user?.id;
+  const isCurrentUser = message?.senderId === user?.id;
 
   return (
     <div className={`flex mb-4 ${isCurrentUser ? 'justify-end' : 'justify-start'}`}>

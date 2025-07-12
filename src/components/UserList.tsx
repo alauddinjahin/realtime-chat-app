@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { useChat } from '../contexts/ChatContext';
 
 const UserList = () => {

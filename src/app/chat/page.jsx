@@ -2,18 +2,21 @@
 
 import { ChatProvider } from '@/contexts/ChatContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { redirect } from 'next/navigation';
 import { useEffect } from 'react';
 import UserList from '@/components/UserList';
 import ChatWindow from '@/components/ChatWindow';
 import MessageInput from '@/components/MessageInput';
+import { useRouter } from 'next/navigation';
 
 export default function ChatPage() {
   const { user, isLoading } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     if (!isLoading && !user) {
-      redirect('/login');
+      // redirect('/login');
+      router.push("/login")
+
     }
   }, [user, isLoading]);
 

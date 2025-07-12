@@ -6,7 +6,7 @@ const MessageInput: FC = () => {
   const { sendMessage, currentChatUser } = useChat();
 
   const handleSendMessage = () => {
-    if (message.trim() && currentChatUser) {
+    if (message?.trim() && currentChatUser) {
       sendMessage(message);
       setMessage('');
     }
